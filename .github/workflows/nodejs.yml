@@ -40,6 +40,9 @@ jobs:
           key: ${{ runner.os }}-cypress-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-cypress-
+      - name: Install Cypress
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        run: yarn add cypress;
       - name: Install Packages
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn;
