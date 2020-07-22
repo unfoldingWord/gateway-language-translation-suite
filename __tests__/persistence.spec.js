@@ -5,7 +5,7 @@ describe('persistence.saveState', () => {
   it('should save the state to local storage', async () => {
     let saveStateKey = 'save-this-123';
     let data = { test: 'data' };
-    await helpers.saveState(saveStateKey, data)
+    await helpers.saveState(saveStateKey, data);
     const res = await helpers.loadState(saveStateKey);
     expect(res).toStrictEqual(data);
   });
