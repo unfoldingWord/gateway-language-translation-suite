@@ -20,9 +20,9 @@
     "deploy": "git push",
     "cypress:open": "REACT_APP_DOOR43_SERVER_URL=https://jfvoldksj.door43.org NODE_ENV=test cypress open",
     "cypress:run": "NODE_ENV=test cypress run",
-    "test:cov": "yarn cypress:run && nyc report --reporter=json-summary --reporter=text-summary",
+    "test:cov": "cross-env NODE_ENV=test yarn cypress:open && nyc report --reporter=json-summary --reporter=text-summary",
     "test:unit": "jest __tests__ && cat ./coverage/lcov.info | coveralls",
-    "test": "start-test 3000 test:cov",
+    "test": " start-test 3000 test:cov",
     "create-coverage-badge": "bash scripts/create-badge-json.sh"
   },
   "dependencies": {
@@ -31,6 +31,8 @@
     "@material-ui/lab": "^4.0.0-alpha.35",
     "@material-ui/styles": "^4.7.1",
     "axios": "^0.19.0",
+    "cross-env": "^7.0.2",
+    "cypress": "^4.11.0",
     "datatable-translatable": "^0.8.8",
     "deep-freeze": "^0.0.1",
     "gitea-react-toolkit": "1.1.0-rc.3",
@@ -45,12 +47,12 @@
     "usfm-js": "^2.0.2"
   },
   "devDependencies": {
-    "@cypress/code-coverage": "1.10.4",
+    "@cypress/code-coverage": "^3.8.1",
     "@rescripts/cli": "^0.0.13",
     "@rescripts/rescript-env": "^0.0.11",
     "@unfoldingword/eslint-config": "^1.1.0",
     "babel-loader": "8.0.5",
-    "babel-plugin-istanbul": "5.2.0",
+    "babel-plugin-istanbul": "^6.0.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "coveralls": "^3.0.9",
     "css-loader": "^3.2.0",
