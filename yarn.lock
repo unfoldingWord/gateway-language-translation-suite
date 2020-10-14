@@ -5094,13 +5094,14 @@ data-urls@^2.0.0:
     whatwg-mimetype "^2.3.0"
     whatwg-url "^8.0.0"
 
-datatable-translatable@^0.8.13:
-  version "0.8.13"
-  resolved "https://registry.yarnpkg.com/datatable-translatable/-/datatable-translatable-0.8.13.tgz#f8978590d977f57ce1793933910d4b92a0af4491"
-  integrity sha512-qF72aX+tU39PA5JBJ0AMENsSK+jWlI4zZwYdYkBG+3hUmFcWoJR9m+zK0iz3NMltn85bwDsUlRbaSRKLS2v/jQ==
+datatable-translatable@^0.9.4:
+  version "0.9.4"
+  resolved "https://registry.yarnpkg.com/datatable-translatable/-/datatable-translatable-0.9.4.tgz#b2a8fb39c86088b5ec8e6f512a18f54859c5bf5e"
+  integrity sha512-n0qEkgDESKKNohkpQclZie4AQFqD/MwHGpqfYI6A7UoA15ehHPKs1SVW1VGKG5WzJzuLBmKee5DsPcMd7GD7CA==
   dependencies:
     deep-freeze "^0.0.1"
-    markdown-translatable "1.0.3"
+    lodash.isequal "^4.5.0"
+    markdown-translatable "^1.1.4"
     mui-datatables "3.3.1"
     use-deep-compare-effect "^1.3.1"
 
@@ -6503,6 +6504,11 @@ extsprintf@^1.2.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/extsprintf/-/extsprintf-1.4.0.tgz#e2689f8f356fad62cca65a3a91c5df5f9551692f"
   integrity sha1-4mifjzVvrWLMplo6kcXfX5VRaS8=
+
+fast-deep-equal@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/fast-deep-equal/-/fast-deep-equal-2.0.1.tgz#7b05218ddf9667bf7f370bf7fdb2cb15fdd0aa49"
+  integrity sha1-ewUhjd+WZ79/Nwv3/bLLFf3Qqkk=
 
 fast-deep-equal@^3.1.1:
   version "3.1.3"
@@ -8997,7 +9003,7 @@ jsbn@~0.1.0:
   resolved "https://registry.yarnpkg.com/jsbn/-/jsbn-0.1.1.tgz#a5e654c2e5a2deb5f201d96cefbca80c0ef2f513"
   integrity sha1-peZUwuWi3rXyAdls77yoDA7y9RM=
 
-jsdom@^11.5.1, jsdom@^11.9.0:
+jsdom@^11.5.1:
   version "11.12.0"
   resolved "https://registry.yarnpkg.com/jsdom/-/jsdom-11.12.0.tgz#1a80d40ddd378a1de59656e9e6dc5a3ba8657bc8"
   integrity sha512-y8Px43oyiBM13Zc1z780FrfNLJCXTL40EWlty/LXUtcjykRBNgLlCjWXpfSPBl2iv+N7koQN+dvqszHZgT/Fjw==
@@ -9688,7 +9694,7 @@ lodash.templatesettings@^4.0.0:
   dependencies:
     lodash._reinterpolate "^3.0.0"
 
-lodash.throttle@^4.0.1:
+lodash.throttle@^4.0.1, lodash.throttle@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/lodash.throttle/-/lodash.throttle-4.1.1.tgz#c23e91b710242ac70c37f1e1cda9274cc39bf2f4"
   integrity sha1-wj6RtxAkKscMN/HhzaknTMOb8vQ=
@@ -9854,27 +9860,18 @@ markdown-to-jsx@^6.11.4:
     prop-types "^15.6.2"
     unquote "^1.1.0"
 
-markdown-translatable@1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/markdown-translatable/-/markdown-translatable-1.0.3.tgz#543f2c2939db5aa621a80cc33cfac13ae9c66bf8"
-  integrity sha512-yFyr3KU8nT3Vs0LBB1Q2q/Q81B4Ke9u8lMsHx0JVvk0tui+c4OQ8EB5QnCLVV4OMnr1Q000V5U2r+cA0rA8sUQ==
+markdown-translatable@^1.1.4:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/markdown-translatable/-/markdown-translatable-1.1.4.tgz#6b1777463f2bfd1e17d823e825a147c7b0d9a90d"
+  integrity sha512-NaC7s9KSVh6I2Dvbs0U6F0TYtfDEDhhSPqPoG2ymDKfR6vjyq7/yOhRQCJT343qiJuoH3ubCjibhSMkMzUZccg==
   dependencies:
     deep-freeze "^0.0.1"
+    lodash.debounce "^4.0.8"
+    lodash.isequal "^4.5.0"
+    lodash.throttle "^4.1.1"
     md5 "^2.2.1"
     prop-types "^15.7.2"
-    react-markdown "^4.0.6"
-    showdown "^1.9.0"
-    turndown "^5.0.3"
-    turndown-plugin-gfm "^1.0.2"
-
-markdown-translatable@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/markdown-translatable/-/markdown-translatable-1.0.4.tgz#c32e69192589b7daacb9b7cfac522f1b8f1531b2"
-  integrity sha512-0WnJ096tH1hkVYiWW4Mj+zKB69wK+fk2a+oVQoWf3fJl3SwFowTppmQZ1iM2xsPKBpxqDzOvGfK/fpLulP2kZw==
-  dependencies:
-    deep-freeze "^0.0.1"
-    md5 "^2.2.1"
-    prop-types "^15.7.2"
+    react-contenteditable "^3.3.5"
     react-markdown "^4.0.6"
     showdown "^1.9.1"
     turndown "^6.0.0"
@@ -12044,7 +12041,7 @@ prompts@^2.0.1:
     kleur "^3.0.3"
     sisteransi "^1.0.4"
 
-prop-types@15.7.2, prop-types@^15.0.0, prop-types@^15.5.8, prop-types@^15.5.9, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@15.7.2, prop-types@^15.0.0, prop-types@^15.5.8, prop-types@^15.5.9, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.1, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -12252,6 +12249,14 @@ react-base16-styling@^0.6.0:
     lodash.curry "^4.0.1"
     lodash.flow "^3.3.0"
     pure-color "^1.2.0"
+
+react-contenteditable@^3.3.5:
+  version "3.3.5"
+  resolved "https://registry.yarnpkg.com/react-contenteditable/-/react-contenteditable-3.3.5.tgz#febff7a46570fdb2f5ff199e506c512e5924e22e"
+  integrity sha512-38A7hlRQfb2KQAQT0kIJC2YlQUU7jcyYM4eh1fj6kAYb3Hmk6hHlr0snelyxVSpPXjPdFllrnSsPkzUS5AtrEA==
+  dependencies:
+    fast-deep-equal "^2.0.1"
+    prop-types "^15.7.1"
 
 react-dev-utils@^7.0.0:
   version "7.0.5"
@@ -13550,7 +13555,7 @@ shellwords@^0.1.1:
   resolved "https://registry.yarnpkg.com/shellwords/-/shellwords-0.1.1.tgz#d6b9181c1a48d397324c84871efbcfc73fc0654b"
   integrity sha512-vFwSUfQvqybiICwZY5+DAWIPLKsWO31Q91JSKl3UYv+K5c2QRPzn0qzec6QPu1Qc9eHYItiP3NdJqNVqetYAww==
 
-showdown@^1.9.0, showdown@^1.9.1:
+showdown@^1.9.1:
   version "1.9.1"
   resolved "https://registry.yarnpkg.com/showdown/-/showdown-1.9.1.tgz#134e148e75cd4623e09c21b0511977d79b5ad0ef"
   integrity sha512-9cGuS382HcvExtf5AHk7Cb4pAeQQ+h0eTr33V1mu+crYWV4KvWAw6el92bDrqGEk5d46Ai/fhbEUwqJ/mTCNEA==
@@ -14622,13 +14627,6 @@ turndown-plugin-gfm@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/turndown-plugin-gfm/-/turndown-plugin-gfm-1.0.2.tgz#6f8678a361f35220b2bdf5619e6049add75bf1c7"
   integrity sha512-vwz9tfvF7XN/jE0dGoBei3FXWuvll78ohzCZQuOb+ZjWrs3a0XhQVomJEb2Qh4VHTPNRO4GPZh0V7VRbiWwkRg==
-
-turndown@^5.0.3:
-  version "5.0.3"
-  resolved "https://registry.yarnpkg.com/turndown/-/turndown-5.0.3.tgz#a1350b66155d7891f10e451432170b0f7cd7449a"
-  integrity sha512-popfGXEiedpq6F5saRIAThKxq/bbEPVFnsDnUdjaDGIre9f3/OL9Yi/yPbPcZ7RYUDpekghr666bBfZPrwNnhQ==
-  dependencies:
-    jsdom "^11.9.0"
 
 turndown@^6.0.0:
   version "6.0.0"
