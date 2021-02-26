@@ -125,8 +125,8 @@ function Translatable() {
       filepath &&
       sourceFile &&
       targetFile &&
-      filepath === sourceFile.filepath &&
-      filepath === targetFile.filepath
+      filepath === sourceFile.filepath
+      //filepath === targetFile.filepath
     ) {
       if (sourceFile.filepath.match(/\.md$/)) {
         let translatableProps = {

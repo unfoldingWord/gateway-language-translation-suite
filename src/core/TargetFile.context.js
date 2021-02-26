@@ -17,6 +17,12 @@ function TargetFileContextProvider({
   } = useContext(AppContext);
 
   const { state: sourceFile } = useContext(FileContext);
+  
+  const getTargetFilePath = (_filepath) => {
+    return 'tn_57-TIT.tsv';
+    //return "en_tn_57-TIT.tsv";
+    //debugger;
+  };
 
   const {
     state, actions, component, components, config,
@@ -24,8 +30,8 @@ function TargetFileContextProvider({
     config: (authentication && authentication.config),
     authentication,
     repository: targetRepository,
-    filepath,
-    onFilepath: setFilepath,
+    filepath: getTargetFilePath(filepath),
+    onFilepath: (_fp) => {},
     defaultContent: (sourceFile && sourceFile.content),
   });
 
