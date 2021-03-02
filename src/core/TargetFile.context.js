@@ -5,6 +5,9 @@ import useEffect from 'use-deep-compare-effect';
 import { AppContext } from '../App.context';
 import * as cv from 'uw-content-validation';
 
+import { fetchManifest } from 'gitea-react-toolkit';
+import YAML from 'js-yaml-parser';
+
 const TargetFileContext = React.createContext();
 
 function TargetFileContextProvider({
@@ -12,16 +15,88 @@ function TargetFileContextProvider({
 }) {
   const {
     state: {
-      authentication, targetRepository, filepath, setFilepath,
+      authentication, sourceRepository, targetRepository, filepath, setFilepath,
     } = {},
   } = useContext(AppContext);
 
   const { state: sourceFile } = useContext(FileContext);
   
-  const getTargetFilePath = (_filepath) => {
-    return 'tn_57-TIT.tsv';
-    //return "en_tn_57-TIT.tsv";
-    //debugger;
+  const {
+    state: sourceManifestState
+  } = useFile({
+    config: (authentication && authentication.config),
+    authentication,
+    repository: sourceRepository,
+    filepath: 'manifest.yaml',
+    defaultContent: '',
+  });
+  
+  const {
+    state: targetManifestState
+  } = useFile({
+    config: (authentication && authentication.config),
+    authentication,
+    repository: targetRepository,
+    filepath: 'manifest.yaml',
+    defaultContent: '',
+  });
+
+  const getTargetFilePath = () => {
+    if (sourceRepository && sourceFile && targetRepository)
+    {
+      console.log("--- --- --- \n\n\n TargetFile.context // getTargetFilePath");
+      console.log(sourceRepository);
+      console.log(sourceFile);
+      console.log(targetRepository);
+
+      const sourceManifestIdentifier = getManifestIdentifierByFilePath({manifestState: sourceManifestState, filePath: sourceFile.path});
+      console.log(sourceManifestIdentifier);
+
+      const targetFilePath = getManifestFilePathByIdentifier({manifestState: targetManifestState, identifier: sourceManifestIdentifier});
+      console.log(targetFilePath);
+
+      return targetFilePath;
+    }
+  };
+
+  const getManifestFilePathByIdentifier = ({manifestState, identifier}) => {
+    if (manifestState)
+    {
+      const manifest = YAML.safeLoad(manifestState.content);
+      if (manifest.projects)
+      {
+        const manifestProjects = manifest.projects.filter(p =>{
+          return p.identifier === identifier;
+        });
+        if (manifestProjects && manifestProjects.length == 1)
+        {
+          return manifestProjects[0].path;
+        }
+      }
+    }
+  };
+
+  const getManifestIdentifierByFilePath = ({manifestState, filePath}) => {
+    if (manifestState)
+    {
+      const manifest = YAML.safeLoad(manifestState.content);
+
+      if (manifest.projects)
+      {
+        console.log(manifest);
+
+        const manifestProjects = manifest.projects.filter(p =>{
+          return p.path === filePath || p.path === './' + filePath;
+        });
+        if (manifestProjects && manifestProjects.length == 1)
+        {
+          const manifestProjectIdentifier = manifestProjects[0].identifier;
+          console.log(manifestProjectIdentifier);
+
+          return manifestProjectIdentifier;
+        }
+      }
+    }
   };
 
   const {
@@ -30,7 +105,7 @@ function TargetFileContextProvider({
     config: (authentication && authentication.config),
     authentication,
     repository: targetRepository,
-    filepath: getTargetFilePath(filepath),
+    filepath: getTargetFilePath(),
     onFilepath: (_fp) => {},
     defaultContent: (sourceFile && sourceFile.content),
   });
