@@ -41,8 +41,11 @@ Object {
         "undefined/api/v1/repos/unfoldingword/en_ta",
         "undefined/api/v1/repos/unfoldingword/en_tw",
         "undefined/api/v1/repos/unfoldingword/en_tn",
+        "undefined/api/v1/repos/unfoldingword/en_tq",
         "undefined/api/v1/repos/unfoldingword/en_obs",
+        "undefined/api/v1/repos/unfoldingword/en_obs-tq",
         "undefined/api/v1/repos/unfoldingword/en_obs-tn",
+        "undefined/api/v1/repos/unfoldingword/en_obs-sn",
       ],
     },
   },
@@ -191,6 +194,7 @@ Object {
     "watchers_count": 10,
     "website": "https://www.unfoldingword.org/utn/",
   },
+  "validationPriority": "high",
 }
 `;
 
@@ -207,5 +211,6 @@ Object {
   "setSourceRepository": [Function],
   "setTargetRepoFromSourceRepo": [Function],
   "setTargetRepository": [Function],
+  "setValidationPriority": [Function],
 }
 `;
