@@ -74,8 +74,42 @@ function TargetFileContextProvider({
           criticalNotices.push([
             `${link}#L1`,
             '1',
-            `Bad TSV Header, expecting "${tsvHeader.replaceAll('\t', ', ')}"`]);
+            `Bad TSV Header, expecting "${tsvHeader.replaceAll('\t', ', ')}"; found "${rows[0].replaceAll('\t',', ')}"`
+          ]);
         }
+        if (tsvHeader.length !== rows[0].length) {
+          criticalNotices.push([
+            `${link}#L1`,
+            '1',
+            `TSV Header has incorrect length, should be ${tsvHeader.length}; found ${rows[0].length}`
+          ]);
+        }
+        if (tsvHeader !== rows[0]) {
+          let firstdiff = -1;
+          let maxlength = Math.max(tsvHeader.length, rows[0].length);
+          console.log("comparing, maxlength=", maxlength)
+          for ( let i=0; i < maxlength; i++ ) {
+            console.log("s vs t:", tsvHeader[i], rows[0][i]);
+            if ( tsvHeader.charCodeAt(i) !== rows[0].charCodeAt(i) ) {
+              firstdiff = i;
+              break;
+            }
+          }
+          if ( firstdiff !== -1 ) {
+            let ch1 = tsvHeader.charCodeAt(firstdiff).toString(16);
+            if ( tsvHeader.length < firstdiff ) ch1 = 'undefined';
+            let ch2 = rows[0].charCodeAt(firstdiff).toString(16);
+            if ( ch2.length === 1 ) ch2='0'+ch2;
+            ch2 = 'x'+ch2.toUpperCase();
+            criticalNotices.push([
+              `${link}#L1`,
+              '1',
+              `Headers different at character ${firstdiff+1}: `+
+              `${ch1} vs ${ch2}`
+            ]);
+          }
+        }
+
   
         if (rows.length > 1) {
           for (let i = 0; i < rows.length; i++) {
