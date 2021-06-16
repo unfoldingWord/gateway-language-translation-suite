@@ -14,7 +14,16 @@ function TargetFileContextProvider({
     } = {},
   } = useContext(AppContext);
 
-  const { state: sourceFile } = useContext(FileContext);
+  const { state: sourceFile, actions: sourceFileActions } = useContext(FileContext);
+
+  // const targetFileCachedContentFile = loadCacheTargetFile();
+  // console.log("cachedContent");
+  // console.log(targetFileCachedContentFile);
+  
+  console.log("tc create // target file // defaultContent");
+  console.log(sourceFile);
+  console.log(sourceFileActions.onLoadCache);
+  console.log(sourceFileActions.onSaveCache);
 
   const {
     state, actions, component, components, config,
@@ -26,6 +35,10 @@ function TargetFileContextProvider({
     onFilepath: setFilepath,
     defaultContent: (sourceFile && sourceFile.content),
     onOpenValidation: onOpenValidation,
+    // Pass cache actions from the app's FileContext (happens to be SOURCE).
+    // Sharing actions allows the app to use onCacheChange events.
+    onLoadCache: sourceFileActions.onLoadCache,
+    onSaveCache: sourceFileActions.onSaveCache,
   });
 
   const context = {
