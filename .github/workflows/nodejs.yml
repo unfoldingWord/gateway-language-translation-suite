@@ -60,7 +60,7 @@ jobs:
           github_token: ${{ secrets.ACTIONS_TOKEN }}
           branch: ${{ env.BRANCH }}
       - name: Archive test screenshots
-        uses: actions/upload-artifact@v2.2.2
+        uses: actions/upload-artifact@v2.2.4
         with:
           name: screenshots
           path: cypress/screenshots
